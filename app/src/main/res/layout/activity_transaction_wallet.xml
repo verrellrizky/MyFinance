@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".transactionWallet"
+    android:layout_margin="20dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Judul_add_Wallet"
+        android:text="Add transaction Wallet"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtWallet_2"
+        android:text="Wallet"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@+id/Judul_add_Wallet"
+        />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectWallet"
+        android:layout_toRightOf="@+id/txtWallet_2"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="200dp"
+        android:layout_below="@+id/Judul_add_Wallet"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_date2"
+        android:text="Date"
+        android:layout_below="@+id/txtWallet_2"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_Type_2"
+        android:layout_below="@+id/txt_date2"
+        android:text="Type"
+        android:layout_marginBottom="20dp"
+        />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectType_2"
+        android:layout_toRightOf="@+id/txt_Type_2"
+        android:layout_below="@id/txt_date2"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="200dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAmount_2"
+        android:layout_below="@+id/txt_Type_2"
+        android:text="Amount"
+        android:layout_marginBottom="40dp"
+        />
+
+    <EditText
+        android:id="@+id/editAmount_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_Type_2"
+        android:layout_toRightOf="@+id/txtAmount_2"
+        android:inputType="number"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNotes_2"
+        android:layout_below="@+id/txtAmount_2"
+        android:text="Notes"
+        android:layout_marginBottom="20dp"
+        />
+
+    <EditText
+        android:id="@+id/editNotes_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtAmount_2"
+        android:layout_toRightOf="@+id/txtNotes_2"
+        android:layout_marginBottom="20dp"
+        />
+
+    <Button
+        android:id="@+id/btn_add_transaction_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editNotes_2"
+        android:text="Add transaction"
+        />
+
+
+</RelativeLayout>

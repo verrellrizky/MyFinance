@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".add_Transaction"
+    android:layout_margin="20dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtDate"
+        android:text="Date"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/datenow"
+        android:text="Date now"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="150dp"
+        android:layout_toRightOf="@+id/txtDate"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtType"
+        android:text="Type"
+        android:layout_below="@+id/txtDate"
+        android:layout_marginBottom="20dp"
+        />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectType"
+        android:layout_below="@+id/txtDate"
+        android:layout_toRightOf="@+id/txtType"
+        android:layout_marginLeft="200dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtAmount"
+        android:layout_below="@+id/txtType"
+        android:text="Amount"
+        android:layout_marginBottom="20dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editAmount"
+        android:layout_toRightOf="@+id/txtAmount"
+        android:layout_below="@+id/txtType"
+        android:inputType="number"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtNotes"
+        android:text="Notes"
+        android:layout_below="@+id/txtAmount"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editNotes"
+        android:layout_below="@+id/txtAmount"
+        android:layout_toRightOf="@id/txtNotes"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_add"
+        android:text="Add Transaction"
+        android:layout_below="@+id/txtNotes"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_add_Wallet"
+        android:layout_below="@id/btn_add"
+        android:layout_marginTop="20dp"
+        android:text="add transaction with wallet"
+        />
+
+</RelativeLayout>

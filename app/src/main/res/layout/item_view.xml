@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:background="@android:color/darker_gray"
+    android:id="@+id/relativeLayoutparent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:background="@android:color/white"
+        android:layout_margin="5dp"
+        android:id="@+id/cardview"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/relativelayoutContent"
+            >
+
+            <TextView
+                android:layout_margin="8dp"
+                android:id="@+id/date"
+                android:text="Date"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                />
+
+            <TextView
+                android:id="@+id/income"
+                android:text="Income: "
+                android:layout_below="@+id/date"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:layout_marginLeft="178dp"
+                android:id="@+id/number_income"
+                android:text="Numbers"
+                android:layout_toRightOf="@+id/income"
+                android:layout_below="@+id/date"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/expense"
+                android:text="Expense: "
+                android:layout_below="@+id/income"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="15dp"
+                />
+
+            <TextView
+                android:layout_marginLeft="170dp"
+                android:id="@+id/number_expense"
+                android:text="Numbers"
+                android:layout_toRightOf="@+id/expense"
+                android:layout_below="@+id/income"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

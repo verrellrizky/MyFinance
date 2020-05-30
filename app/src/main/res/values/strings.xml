@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">My Finance</string>
+
+    <string-array name="Type">
+        <item>Income</item>
+        <item>Expense</item>
+    </string-array>
+    
+    <string-array name="Wallet">
+        <item>Cash</item>
+        <item>Bank</item>
+    </string-array>
+
+</resources>
