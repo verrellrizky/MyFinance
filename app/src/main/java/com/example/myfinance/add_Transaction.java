@@ -12,10 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.text.DateFormat;
 import java.util.Calendar;
-
 
 public class add_Transaction extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -48,7 +46,6 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
         spinner = findViewById(R.id.selectType);
 
         mdb = new DataHelper(this);
-
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
