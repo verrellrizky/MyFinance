@@ -93,6 +93,7 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
             Toast.makeText(add_Transaction.this, "data not inserted", Toast.LENGTH_LONG).show();
         }
     }
+    
 
     public void openTransactionWallet(){
         Intent intent = new Intent(this, transactionWallet.class);
