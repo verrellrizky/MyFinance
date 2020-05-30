@@ -15,8 +15,9 @@ public class DataHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "Transactions";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "Date";
-    public static final String COL_3 = "Amount";
-    public static final String COL_4 = "Notes";
+    public static final String COL_3 = "Type";
+    public static final String COL_4 = "Amount";
+    public static final String COL_5 = "Notes";
 
 
     public DataHelper(@Nullable Context context) {
@@ -26,7 +27,7 @@ public class DataHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Date TEXT, Amount TEXT, Notes TEXT)");
+        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Date TEXT, Type TEXT, Amount TEXT, Notes TEXT)");
     }
 
     @Override
@@ -35,13 +36,14 @@ public class DataHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String Date, String Amount, String Notes){
+    public boolean insertData(String Date, String Type,String Amount, String Notes){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(COL_2, Date);
-        contentValues.put(COL_3, Amount);
-        contentValues.put(COL_4, Notes);
+        contentValues.put(COL_3, Type);
+        contentValues.put(COL_4, Amount);
+        contentValues.put(COL_5, Notes);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1){

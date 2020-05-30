@@ -51,7 +51,7 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
         spinner = findViewById(R.id.selectType);
 
         mdb = new DataHelper(this);
-        addData();
+
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.Type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -66,9 +66,33 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
             }
         });
 
+            calendar = Calendar.getInstance();
+
+            addTransaction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    addData();
+                }
+            });
     }
 
+    public void addData(){
+        Spinner spinner;
+        spinner = findViewById(R.id.selectType);
+        final String selected = spinner.getSelectedItem().toString();
 
+        boolean isInserted = mdb.insertData(
+                datenow.getText().toString(),
+                selected,
+                editAmount.getText().toString(),
+                editNotes.getText().toString());
+
+        if(isInserted == true){
+            Toast.makeText(add_Transaction.this, "data inserted", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(add_Transaction.this, "data not inserted", Toast.LENGTH_LONG).show();
+        }
+    }
 
     public void openTransactionWallet(){
         Intent intent = new Intent(this, transactionWallet.class);
@@ -77,7 +101,7 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-         String selected = parent.getItemAtPosition(position).toString();
+        parent.getItemAtPosition(position).toString();
     }
 
     @Override
@@ -85,25 +109,5 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
 
     }
 
-    public void addData(){
 
-        calendar = Calendar.getInstance();
-        final String dateNow = DateFormat.getDateInstance().format(calendar.getTime());
-
-        addTransaction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean isInserted = mdb.insertData(
-                        datenow.getText().toString(),
-                        editAmount.getText().toString(),
-                        editNotes.getText().toString());
-
-                if(isInserted == true){
-                    Toast.makeText(add_Transaction.this, "data inserted", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(add_Transaction.this, "data not inserted", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
 }
