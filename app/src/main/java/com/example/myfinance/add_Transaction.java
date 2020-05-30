@@ -13,7 +13,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.sql.Date;
 import java.text.DateFormat;
 import java.util.Calendar;
 
@@ -25,7 +24,6 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
     DataHelper mdb;
     Calendar calendar;
     TextView datenow;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +42,6 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
         datenow = findViewById(R.id.datenow);
 
         datenow.setText(dateNow);
-
 
         Spinner spinner;
 
@@ -66,14 +63,14 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
             }
         });
 
-            calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
 
-            addTransaction.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    addData();
-                }
-            });
+        addTransaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addData();
+            }
+        });
     }
 
     public void addData(){
@@ -93,7 +90,6 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
             Toast.makeText(add_Transaction.this, "data not inserted", Toast.LENGTH_LONG).show();
         }
     }
-    
 
     public void openTransactionWallet(){
         Intent intent = new Intent(this, transactionWallet.class);
@@ -109,6 +105,4 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-
 }
