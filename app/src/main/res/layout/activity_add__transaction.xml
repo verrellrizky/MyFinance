@@ -16,14 +16,13 @@
         android:layout_marginBottom="20dp"
         />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/datenow"
-        android:text="Date now"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="150dp"
+        android:id="@+id/btnCalendar"
+        android:text="Select date"
         android:layout_toRightOf="@+id/txtDate"
+        android:layout_marginLeft="150dp"
         />
 
     <TextView
@@ -33,15 +32,17 @@
         android:text="Type"
         android:layout_below="@+id/txtDate"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="25dp"
         />
 
     <Spinner
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/selectType"
-        android:layout_below="@+id/txtDate"
+        android:layout_below="@+id/btnCalendar"
         android:layout_toRightOf="@+id/txtType"
         android:layout_marginLeft="200dp"
+        android:layout_marginTop="20dp"
         />
 
     <TextView

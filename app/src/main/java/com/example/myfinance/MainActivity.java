@@ -12,12 +12,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class MainActivity extends AppCompatActivity  {
 
     RecyclerView recyclerView;
     Button add;
+    FloatingActionButton floatingActionButton;
     Spinner spinner;
-
+//TESTT BARUUUUUUUUUUU
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,13 +28,22 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recyclerView);
-        add = findViewById(R.id.btn_to_add);
+        floatingActionButton = findViewById(R.id.fabAddTrx);
+        //add = findViewById(R.id.btn_to_add);
 
 
-        add.setOnClickListener(new View.OnClickListener() {
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 to_addTransaction();
+
+
+
+
+
+
+
+                
             }
         });
     }

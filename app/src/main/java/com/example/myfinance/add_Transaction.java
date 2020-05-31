@@ -2,26 +2,30 @@ package com.example.myfinance;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.text.DateFormat;
+
 import java.util.Calendar;
 
 public class add_Transaction extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    Button addWallet, addTransaction;
+    Button addWallet, addTransaction, selectDate;
     EditText editAmount, editNotes;
     DataHelper mdb;
     Calendar calendar;
-    TextView datenow;
+    DatePicker datePicker;
+    TextView date;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +34,13 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
 
         addWallet = findViewById(R.id.btn_add_Wallet);
         addTransaction = findViewById(R.id.btn_add);
+        selectDate = findViewById(R.id.btnCalendar);
 
         editAmount = findViewById(R.id.editAmount);
         editNotes = findViewById(R.id.editNotes);
 
-        calendar = Calendar.getInstance();
-        String dateNow = DateFormat.getDateInstance().format(calendar.getTime());
+        date = findViewById(R.id.txtDate);
 
-        datenow = findViewById(R.id.datenow);
-
-        datenow.setText(dateNow);
 
         Spinner spinner;
 
@@ -60,23 +61,45 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
             }
         });
 
-        calendar = Calendar.getInstance();
-
         addTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addData();
             }
         });
+
+        selectDate.setOnClickListener(new View.OnClickListener() {
+
+
+
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(add_Transaction.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+                                month = month+1;
+
+                                String selectedDate = + dayOfMonth + "/" + month + "/" + year;
+                                date.setText(selectedDate);
+                            }
+                        },0,0,0);
+                datePickerDialog.show();
+            }
+        });
+
     }
 
+
     public void addData(){
+
         Spinner spinner;
         spinner = findViewById(R.id.selectType);
         final String selected = spinner.getSelectedItem().toString();
 
         boolean isInserted = mdb.insertData(
-                datenow.getText().toString(),
+                date.getText().toString(),
                 selected,
                 editAmount.getText().toString(),
                 editNotes.getText().toString());
