@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity  {
     Button add;
     FloatingActionButton floatingActionButton;
     Spinner spinner;
-//TESTT BARUUUUUUUUUUU
+//TEST BARU
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +36,6 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 to_addTransaction();
-
-
-
-
-
-
-
-                
             }
         });
     }
