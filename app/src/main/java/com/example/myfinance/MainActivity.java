@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity  {
     Button add;
     FloatingActionButton floatingActionButton;
     Spinner spinner;
-//TEST BARU
+//TEST BARU BANGETT ANJ
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
