@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity  {
     Adapter adapter;
     DataHelper dataHelper;
     Spinner spinner;
-//TESTT BARUUUUUUUUUUU
+//TEST BARU BANGETT ANJ
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +42,6 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 to_addTransaction();
-
-
-
-
-
-
-
-                
             }
         });
     }
