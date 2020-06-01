@@ -71,20 +71,23 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
         selectDate.setOnClickListener(new View.OnClickListener() {
 
 
-
+            Calendar calendar = Calendar.getInstance();
+            final int year = calendar.get(Calendar.YEAR);
+            final int month = calendar.get(Calendar.MONTH);
+            final int day = calendar.get(Calendar.DAY_OF_MONTH);
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(add_Transaction.this,
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                            public void onDateSet(DatePicker view, int year, int month, int day) {
 
                                 month = month+1;
 
-                                String selectedDate = + dayOfMonth + "/" + month + "/" + year;
+                                String selectedDate = + day + "/" + month + "/" + year;
                                 date.setText(selectedDate);
                             }
-                        },0,0,0);
+                        }, year, month, day);
                 datePickerDialog.show();
             }
         });
@@ -106,6 +109,8 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
 
         if(isInserted == true){
             Toast.makeText(add_Transaction.this, "data inserted", Toast.LENGTH_LONG).show();
+            Intent toMain = new Intent(add_Transaction.this, MainActivity.class);
+            startActivity(toMain);
         }else{
             Toast.makeText(add_Transaction.this, "data not inserted", Toast.LENGTH_LONG).show();
         }
