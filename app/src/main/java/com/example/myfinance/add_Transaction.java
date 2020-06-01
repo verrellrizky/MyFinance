@@ -111,6 +111,7 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
             Toast.makeText(add_Transaction.this, "data inserted", Toast.LENGTH_LONG).show();
             Intent toMain = new Intent(add_Transaction.this, MainActivity.class);
             startActivity(toMain);
+
         }else{
             Toast.makeText(add_Transaction.this, "data not inserted", Toast.LENGTH_LONG).show();
         }
