@@ -1,6 +1,8 @@
 package com.example.myfinance;
 
 import android.content.Context;
+import android.database.Cursor;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,12 @@ import androidx.recyclerview.widget.RecyclerView;
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     Context ctx;
+    Cursor res;
+
+    public Adapter(Context ctx, Cursor res) {
+        this.ctx = ctx;
+        this.res = res;
+    }
 
     @NonNull
     @Override
@@ -27,12 +35,19 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        if(!res.moveToPosition(position)){
+            return;
+        }
+        String type = res.getString(res.getColumnIndex(DataHelper.COL_3));
+        String amount = res.getString(res.getColumnIndex(DataHelper.COL_4));
+        String date = res.getString(res.getColumnIndex(DataHelper.COL_2));
+        String notes = res.getString(res.getColumnIndex(DataHelper.COL_5));
+        holder.date.setText(date);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return res.getCount();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

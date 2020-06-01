@@ -1,6 +1,7 @@
 package com.example.myfinance;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -17,8 +18,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 public class MainActivity extends AppCompatActivity  {
 
     RecyclerView recyclerView;
-    Button add;
     FloatingActionButton floatingActionButton;
+    Adapter adapter;
+    DataHelper dataHelper;
     Spinner spinner;
 //TESTT BARUUUUUUUUUUU
 
@@ -29,6 +31,10 @@ public class MainActivity extends AppCompatActivity  {
 
         recyclerView = findViewById(R.id.recyclerView);
         floatingActionButton = findViewById(R.id.fabAddTrx);
+        dataHelper = new DataHelper(this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new Adapter(this, dataHelper.getData());
+        recyclerView.setAdapter(adapter);
         //add = findViewById(R.id.btn_to_add);
 
 
