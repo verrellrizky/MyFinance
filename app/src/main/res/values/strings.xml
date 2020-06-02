@@ -5,7 +5,7 @@
         <item>Income</item>
         <item>Expense</item>
     </string-array>
-    
+
     <string-array name="Wallet">
         <item>Cash</item>
         <item>Bank</item>

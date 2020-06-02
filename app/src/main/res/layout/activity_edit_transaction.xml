@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditTransaction"
+    android:layout_margin="20dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtWallet"
+                android:text="Select Wallet"
+                android:layout_marginBottom="10dp"
+                android:textSize="26sp"
+                android:textColor="#000"
+                />
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtWallet"
+                android:id="@+id/rg_wallet"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bank"
+                    android:id="@+id/bank"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cash"
+                    android:id="@+id/cash"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rg_wallet"
+                android:id="@+id/txtDate"
+                android:text="Transaction Date"
+                android:layout_marginBottom="10dp"
+                android:textSize="26sp"
+                android:textColor="#000"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnCalendar"
+                android:text="Change date"
+                android:layout_below="@+id/txtDate"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtType"
+                android:text="Type"
+                android:layout_below="@+id/btnCalendar"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:textSize="26sp"
+                android:textColor="#000"
+                />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/selectType"
+                android:layout_below="@+id/txtType"
+                android:layout_toRightOf="@+id/txtType"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtAmount"
+                android:layout_below="@+id/selectType"
+                android:text="Amount"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="26sp"
+                android:textColor="#000"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editAmount"
+                android:hint="Enter amount"
+                android:layout_below="@+id/txtAmount"
+                android:inputType="number"
+                android:textColor="#000"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtNotes"
+                android:text="Notes"
+                android:layout_below="@+id/editAmount"
+                android:layout_marginTop="20dp"
+                android:textSize="26sp"
+                android:layout_marginBottom="10dp"
+                android:textColor="#000"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/editNotes"
+                android:hint="Enter notes"
+                android:gravity="top|left"
+                android:inputType="textMultiLine"
+                android:lines="3"
+                android:layout_below="@+id/txtNotes"
+                android:textColor="#000"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_edit"
+                android:text="Edit Transaction"
+                android:backgroundTint="#05a605"
+                android:textColor="#fff"
+                android:layout_below="@+id/editNotes"
+                android:layout_marginTop="20dp"
+                android:padding="20dp"
+                />
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

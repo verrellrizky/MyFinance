@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,20 +22,19 @@ import java.util.Calendar;
 
 public class add_Transaction extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    Button addWallet, addTransaction, selectDate;
+    Button addTransaction, selectDate;
     EditText editAmount, editNotes;
     DataHelper mdb;
     Calendar calendar;
     DatePicker datePicker;
     TextView date;
-
+    RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__transaction);
-
-        addWallet = findViewById(R.id.btn_add_Wallet);
+        radioGroup = findViewById(R.id.rg_wallet);
         addTransaction = findViewById(R.id.btn_add);
         selectDate = findViewById(R.id.btnCalendar);
 
@@ -54,13 +56,6 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
 
-        addWallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openTransactionWallet();
-            }
-        });
-
         addTransaction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,8 +64,6 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
         });
 
         selectDate.setOnClickListener(new View.OnClickListener() {
-
-
             Calendar calendar = Calendar.getInstance();
             final int year = calendar.get(Calendar.YEAR);
             final int month = calendar.get(Calendar.MONTH);
@@ -81,9 +74,7 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePicker view, int year, int month, int day) {
-
                                 month = month+1;
-
                                 String selectedDate = + day + "/" + month + "/" + year;
                                 date.setText(selectedDate);
                             }
@@ -96,23 +87,43 @@ public class add_Transaction extends AppCompatActivity implements AdapterView.On
 
 
     public void addData(){
-
         Spinner spinner;
         spinner = findViewById(R.id.selectType);
         final String selected = spinner.getSelectedItem().toString();
+        String selDate = date.getText()+"";
+        String amount = editAmount.getText().toString();
+        String notes = editNotes.getText().toString();
+        String walletChosen = "";
+        int walletId = radioGroup.getCheckedRadioButtonId();
+        if(walletId == -1){
+            Toast.makeText(add_Transaction.this, "Please input wallet type", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(walletId != -1){
+            RadioButton radioButton = findViewById(walletId);
+            walletChosen = radioButton.getText().toString();
+        }
+        if(selDate.equals("") || selDate.equals("Transaction Date")){
+            Toast.makeText(add_Transaction.this, "Please input transaction date", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(selected.equals("")){
+            Toast.makeText(add_Transaction.this, "Please input transaction type", Toast.LENGTH_LONG).show();
+            return;
+        }
+        if(amount.equals("")){
+            Toast.makeText(add_Transaction.this, "Please input transaction amount", Toast.LENGTH_LONG).show();
+            return;
+        }
 
-        boolean isInserted = mdb.insertData(
-                date.getText().toString(),
-                selected,
-                editAmount.getText().toString(),
-                editNotes.getText().toString());
-
-        if(isInserted == true){
+        boolean isInserted = mdb.insertData(selDate, selected, amount, notes, walletChosen);
+        if(isInserted){
             Toast.makeText(add_Transaction.this, "data inserted", Toast.LENGTH_LONG).show();
             Intent toMain = new Intent(add_Transaction.this, MainActivity.class);
             startActivity(toMain);
-
-        }else{
+            finish();
+        }
+        else {
             Toast.makeText(add_Transaction.this, "data not inserted", Toast.LENGTH_LONG).show();
         }
     }

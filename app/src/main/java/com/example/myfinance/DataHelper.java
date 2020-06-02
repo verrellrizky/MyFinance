@@ -19,6 +19,7 @@ public class DataHelper extends SQLiteOpenHelper {
     public static final String COL_3 = "Type";
     public static final String COL_4 = "Amount";
     public static final String COL_5 = "Notes";
+    public static final String COL_6 = "Wallet";
 
 
     public DataHelper(@Nullable Context context) {
@@ -28,7 +29,7 @@ public class DataHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Date TEXT, Type TEXT, Amount TEXT, Notes TEXT)");
+        db.execSQL("create table "+TABLE_NAME+"(ID INTEGER PRIMARY KEY AUTOINCREMENT, Date TEXT, Type TEXT, Amount TEXT, Notes TEXT, Wallet TEXT)");
     }
 
     @Override
@@ -37,7 +38,7 @@ public class DataHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String Date, String Type,String Amount, String Notes){
+    public boolean insertData(String Date, String Type,String Amount, String Notes, String Wallet){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -45,6 +46,7 @@ public class DataHelper extends SQLiteOpenHelper {
         contentValues.put(COL_3, Type);
         contentValues.put(COL_4, Amount);
         contentValues.put(COL_5, Notes);
+        contentValues.put(COL_6, Wallet);
 
         long result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1){
@@ -58,4 +60,34 @@ public class DataHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor getSpecificData( String pos){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String selection = COL_1 + " LIKE ?";
+        String[] selArgs = {pos};
+        Cursor res = db.query(TABLE_NAME, null, selection, selArgs, null, null, null);
+        return res;
+    }
+
+    public boolean updateData(String id, String Date, String Type,String Amount, String Notes, String Wallet){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_2, Date);
+        contentValues.put(COL_3, Type);
+        contentValues.put(COL_4, Amount);
+        contentValues.put(COL_5, Notes);
+        contentValues.put(COL_6, Wallet);
+        long result = db.update(TABLE_NAME, contentValues, "ID = ?", new String[]{id});
+        if(result == -1){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    public Integer deleteData(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Integer result = db.delete(TABLE_NAME,  "ID = ? ", new String[]{id});
+        return result;
+    }
 }
